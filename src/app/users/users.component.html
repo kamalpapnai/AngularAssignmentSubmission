@@ -1,0 +1,38 @@
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Assignment 1 & 2
+            </h1>
+            <h2 class="subtitle">
+                Binding Data and Custom Directives
+            </h2>
+        </div>
+    </div>
+</section>
+<br>
+<div>
+    <table class="table is-bordered is-striped" *ngIf="users.length>0 else noUsers">
+        <thead>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Email</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.username}}</td>
+                <td>{{user.name | titlecase}}</td>
+                <td highlighter>{{user.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button class="button is-small is-danger" (click)="deleteAllUsers()" *ngIf="users.length>0">Delete All Users</button>
+
+        <!--Template to render when no users are present-->
+    <ng-template #noUsers>
+        <div>
+            <p class="tag no-data">No Users Available</p>
+        </div>
+    </ng-template>
+</div>
